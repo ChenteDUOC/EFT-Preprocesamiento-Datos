@@ -1,0 +1,68 @@
+. TÃ­tulo: Marketing bancario (con contexto social/econÃ³mico)
+
+2. Fuentes
+Creado por: SÃ©rgio Moro (ISCTE-IUL), Paulo Cortez (Univ. Minho) y Paulo Rita (ISCTE-IUL) @ 2014
+
+3. Uso anterior:
+
+El conjunto de datos completo (bank-additional-full.csv) fue descrito y analizado en:
+
+S. Moro, P. Cortez y P. Rita. Un enfoque basado en datos para predecir el Ã©xito del telemarketing bancario. Decision Support Systems (2014), doi:10.1016/j.dss.2014.03.001.
+
+4. InformaciÃ³n relevante:
+
+Este conjunto de datos se basa en el conjunto de datos "Bank Marketing" de UCI (consulte la descripciÃ³n en: http://archive.ics.uci.edu/ml/datasets/Bank+Marketing).
+Los datos se enriquecen con la adiciÃ³n de cinco nuevas caracterÃ­sticas/atributos sociales y econÃ³micos (indicadores nacionales de un paÃ­s con una poblaciÃ³n de aproximadamente 10 millones), publicados por el Banco de Portugal y disponibles pÃºblicamente en: https://www.bportugal.pt/estatisticasweb.
+
+Este conjunto de datos no incluye todos los atributos debido a cuestiones de privacidad
+
+El archivo zip incluye dos conjuntos de datos:
+
+1) bank-additional-full.csv con todos los ejemplos, ordenados por fecha (desde mayo de 2008 hasta noviembre de 2010).
+2) bank-additional.csv con el 10% de los ejemplos (4119), seleccionados aleatoriamente de bank-additional-full.csv.
+El conjunto de datos mÃ¡s pequeÃ±o se proporciona para probar algoritmos de aprendizaje automÃ¡tico que requieren mÃ¡s recursos computacionales (por ejemplo, SVM).
+
+El objetivo de la clasificaciÃ³n binaria es predecir si el cliente suscribirÃ¡ un depÃ³sito a plazo bancario (variable y).
+
+5. NÃºmero de instancias: 41188 para bank-additional-full.csv
+
+6. NÃºmero de atributos: 20 + atributo de salida.
+
+7. InformaciÃ³n de atributos:
+
+Variables de entrada:
+
+# Datos del cliente del banco:
+1 - edad (numÃ©rico)
+2 - trabajo: tipo de trabajo (categÃ³rico: "administrador", "obrero", "empresario", "empleado domÃ©stico", "gerente", "jubilado", "autÃ³nomo", "servicios", "estudiante", "tÃ©cnico", "desempleado", "desconocido")
+3 - estado civil: estado civil (categÃ³rico: "divorciado", "casado", "soltero", "desconocido"; nota: "divorciado" significa divorciado o viudo)
+4 - educaciÃ³n (categÃ³rico: "bÃ¡sico.4a", "bÃ¡sico.6a", "bÃ¡sico.9a", "bachillerato", "analfabeto", "curso profesional", "tÃ­tulo universitario", "desconocido")
+5 - mora: Â¿tiene crÃ©dito en mora? (categÃ³rico: "no", "sÃ­", "desconocido")
+6 - vivienda: Â¿tiene prÃ©stamo para vivienda? (categÃ³rico: "no", "sÃ­", "desconocido")
+7 - prÃ©stamo: Â¿tiene prÃ©stamo personal? (categÃ³rico: "no", "sÃ­", "desconocido")
+# relacionado con el Ãºltimo contacto de la campaÃ±a actual:
+8 - contacto: tipo de comunicaciÃ³n del contacto (categÃ³rico: "celular", "telÃ©fono")
+9 - mes: mes del aÃ±o del Ãºltimo contacto (categÃ³rico: "ene", "feb", "mar", ..., "nov", "dic")
+10 - dÃ­a_de_la_semana: dÃ­a de la semana del Ãºltimo contacto (categÃ³rico: "mon", "tue", "wed", "thu", "fri")
+11 - duraciÃ³n: duraciÃ³n del Ãºltimo contacto, en segundos (numÃ©rico). Nota importante: este atributo afecta en gran medida el objetivo de salida (p. ej., si duraciÃ³n=0 entonces y="no"). Sin embargo, la duraciÃ³n no se conoce antes de que se realice una llamada. AdemÃ¡s, despuÃ©s del final de la llamada, obviamente se conoce y. Por lo tanto, esta entrada solo se debe incluir con fines de referencia y se debe descartar si la intenciÃ³n es tener un modelo predictivo realista.
+# otros atributos:
+12 - campaÃ±a: nÃºmero de contactos realizados durante esta campaÃ±a y para este cliente (numÃ©rico, incluye el Ãºltimo contacto)
+13 - pdays: nÃºmero de dÃ­as transcurridos desde que el cliente fue contactado por Ãºltima vez de una campaÃ±a anterior (numÃ©rico; 999 significa que el cliente no fue contactado previamente)
+14 - anterior: nÃºmero de contactos realizados antes de esta campaÃ±a y para este cliente (numÃ©rico)
+15 - poutcome: resultado de la campaÃ±a de marketing anterior (categÃ³rico: "fracaso", "inexistente", "Ã©xito")
+# atributos de contexto social y econÃ³mico
+16 - emp.var.rate: tasa de variaciÃ³n del empleo - indicador trimestral (numÃ©rico)
+17 - cons.price.idx: Ã­ndice de precios al consumidor - indicador mensual (numÃ©rico)
+18 - cons.conf.idx: Ã­ndice de confianza del consumidor - indicador mensual (numÃ©rico)
+19 - euribor3m: tasa del euribor a 3 meses - indicador diario (numÃ©rico)
+20 - nr.employed: nÃºmero de empleados
+
+- Indicador trimestral (numÃ©rico)
+Variable de salida (objetivo deseado):
+21 - y - Â¿el cliente ha suscrito un depÃ³sito a plazo? (binario: "sÃ­", "no")
+
+8. Valores de atributos faltantes: hay varios valores faltantes en algunos atributos categÃ³ricos, todos codificados con la etiqueta "desconocido". Estos valores faltantes se pueden tratar como una posible etiqueta de clase o mediante tÃ©cnicas de eliminaciÃ³n o imputaciÃ³n.
+
+
+
+Nota: el archivo se puede leer en python utilizando: sep=";"
